@@ -1,0 +1,26 @@
+{
+  "name": "atomicaf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "demo": "NODE_OPTIONS='--loader ts-node/esm --experimental-specifier-resolution=node' node src/core/demo.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.15.20",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@noble/curves": "^1.9.1",
+    "@oclif/core": "^4.3.0",
+    "bitcoinjs-lib": "^6.1.7",
+    "chalk": "^5.4.1",
+    "nostr-tools": "^2.13.0",
+    "tiny-secp256k1": "^2.2.3"
+  }
+}
