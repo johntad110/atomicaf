@@ -1,3 +1,4 @@
+![AtomicAF](./Screenshot.png)
 # AtomicAF: The Swap Protocol That'll Make Bitcoin Maximalists Rage-Quit
 
 "We're not here to play nice. We're here to nuke trusted third parties into obsolescence."
