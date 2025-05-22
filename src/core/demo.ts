@@ -19,7 +19,7 @@ async function main(): Promise<void> {
   // Step 1: Create Seller
   console.log(chalk.bold.green('\n🔹 Step 1: Seller Setup'));
   const sellerPrivKey = NostrHandler.generatePrivateKey();
-  const seller = new SwapSeller({nostrPrivateKey: sellerPrivKey.toString()});
+  const seller = new SwapSeller({nostrPrivateKey: bytesToHex(sellerPrivKey)});
   console.log(chalk.blue('  Seller Nostr Pubkey:'), chalk.yellow(seller.nostrPublicKey));
 
   // Step 2: Create Buyer
