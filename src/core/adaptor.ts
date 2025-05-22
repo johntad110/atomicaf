@@ -20,11 +20,21 @@ export interface AdaptorSignature {
 
 // Helper function to add two public keys (EC point addition)
 export async function addPubKeys(p1: Uint8Array, p2: Uint8Array): Promise<Uint8Array> {
-    const point1 = schnorr.getPublicKey(p1);
-    const point2 = schnorr.getPublicKey(p2);
-    // This is simplified - actual EC addition requires proper curve math
-    // In production, use a proper EC library with point addition
-    throw new Error("Point addition not fully implemented - needs proper EC math");
+    // Ensure points are in compressed format (33 bytes)
+    const p1Hex = bytesToHex(p1);
+    const p2Hex = bytesToHex(p2);
+    const p1Compressed = p1.length === 32 ? '02' + p1Hex : p1Hex;
+    const p2Compressed = p2.length === 32 ? '02' + p2Hex : p2Hex;
+    
+    // Convert bytes to curve points
+    const point1 = secp256k1.ProjectivePoint.fromHex(p1Compressed);
+    const point2 = secp256k1.ProjectivePoint.fromHex(p2Compressed);
+    
+    // Add points using curve's native addition
+    const sum = point1.add(point2);
+    
+    // Convert back to compressed format bytes
+    return hexToBytes(sum.toHex(true));
 }
 
 // Creates a new adaptor signature
